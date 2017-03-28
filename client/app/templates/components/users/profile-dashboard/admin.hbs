@@ -1,0 +1,31 @@
+<section class="container" local-class="container">
+	<div class="row">
+		<div class="col-sm-1" local-class="left_align">
+			{{#link-to 'profile'}}
+				<img src="/assets/images/settings.png" local-class="settings_icon">
+			{{/link-to}}
+		</div>
+		<div class="col-sm-10" local-class="white_text">
+			<img src="/assets/images/admin.jpeg" local-class="profilepicture">
+			{{ user.name }}
+		</div>
+		<div class="col-sm-1" local-class="rigth_align">
+			<img src="/assets/images/logout.png" local-class="logout_icon"
+				{{action 'logout'}}>
+		</div>
+	</div>
+	<br>
+
+	{{#link-to 'vehicles.create'}}
+        <div local-class="new_vehicule_button">Create new vehicles
+            <img src="/assets/images/caricon.png" local-class="car_icon">
+        </div>
+	{{/link-to}}
+	{{#link-to 'users.create'}}
+        <div local-class="new_user_button">Create new user
+            <img src="/assets/images/usericon.png" local-class="user_icon">
+        </div>
+	{{/link-to}}
+
+</section>
+{{yield}}

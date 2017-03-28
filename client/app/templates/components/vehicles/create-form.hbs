@@ -1,0 +1,73 @@
+<div local-class="container">
+	{{#if error}}
+		<div class="ui black message">
+			<div class="header">
+				Error
+			</div>
+			<p>	{{error}}
+			</p>
+		</div>
+	{{/if}}
+	<form class="ui form">
+		<p>
+			{{validated-input
+			id='brand'
+			type='text'
+			label='Brand'
+			value=vehicle.brand
+			valuePath='brand'
+			model=vehicle
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='make'
+			type='text'
+			label='Make'
+			value=vehicle.make
+			valuePath='make'
+			model=vehicle
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='price'
+			type='number'
+			label='Price'
+			value=vehicle.price
+			valuePath='price'
+			model=vehicle
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='speed'
+			type='number'
+			label='Speed'
+			value=vehicle.speed
+			valuePath='speed'
+			model=vehicle
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='pictureurl'
+			type='text'
+			label='Picture Url'
+			value=vehicle.pictureUrl
+			valuePath='pictureUrl'
+			model=vehicle
+			}}
+		</p>
+		<div local-class="center">
+			<button class="ui button"
+							type="submit"
+							disabled={{vehicle.validations.isInvalid}}
+				{{action 'createVehicle'}}>
+				Create new vehicle
+			</button>
+		</div>
+	</form>
+</div>
+
+{{yield}}

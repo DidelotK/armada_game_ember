@@ -1,0 +1,115 @@
+<div local-class="container">
+	<table class="ui inverted table" local-class="parameters">
+		<thead>
+		<tr>
+			<th>Vehicle</th>
+			<th>Departure</th>
+			<th>Arrival</th>
+			<th>Value</th>
+			<th>Remaining</th>
+			<th>Achievement</th>
+			<th>
+				<div class="ui buttons">
+					<button class="ui
+						{{if (eq typeRide 'inProgress') "grey"}} button"
+						{{action 'changeTypeRide' 'inProgress'}}>
+						In progress
+					</button>
+					<button class="ui
+						{{if (eq typeRide 'done') "grey"}} button"
+						{{action 'changeTypeRide' 'done'}}>
+						Done
+					</button>
+				</div></th>
+		</tr>
+		</thead>
+		<tbody>
+		{{#each rides as |ride|}}
+			<tr>
+				<td class="middle aligned">
+					{{ ride.vehicleId.model.brand }} - {{ ride.vehicleId.model.make }}
+				</td>
+				<td class="middle aligned"><{{ ride.departurePlace }}/td>
+				<td class="middle aligned">{{ ride.arrivalPlace }}</td>
+				<td class="middle aligned">{{ ride.benefice }} €</td>
+				<td class="middle aligned">
+					{{rides.time-remaining
+					ride.departureTime
+					ride.travelDuration
+					refreshTick
+					}}
+				</td>
+				<td class="middle aligned">
+					{{rides.pourcentage
+					ride.departureTime
+					ride.travelDuration
+					refreshTick
+					}}
+				</td>
+				<td class="middle aligned">
+					<div class="ui buttons">
+						<button class="ui button">
+							<img local-class="vehicle_picture" src="{{ ride.vehicleId.model.pictureUrl }}">
+						</button>
+						<button class="ui orange button"
+							{{action 'selectRide' ride}}>
+							<i class="find icon"></i>
+						</button>
+					</div>
+				</td>
+			</tr>
+		{{/each}}
+		</tbody>
+	</table>
+	<table class="ui inverted table" local-class="preview">
+		<tbody>
+		<tr>
+			<td class="middle aligned">
+				<div local-class="map">
+					{{my-google-map ride=selectedRide}}
+				</div>
+			</td>
+			<td class="right aligned" local-class="estimation">
+				<p><br>Distance Traveled: <br><br>
+					<b>
+						{{#if selectedRide }}
+							{{rides.distance-traveled
+							selectedRide.departureTime
+							selectedRide.vehicleId.model.speed
+							selectedRide.travelDuration
+							refreshTick
+							}}
+						{{else}}
+							NA
+						{{/if}}
+					</b>
+				</p>
+				<p>Distance Remaining : <br><br>
+					<b>
+						{{#if selectedRide }}
+							{{rides.distance-remaining
+							selectedRide.departureTime
+							selectedRide.vehicleId.model.speed
+							selectedRide.travelDuration
+							refreshTick
+							}}
+						{{else}}
+							NA
+						{{/if}}
+					</b>
+				</p>
+				<p>Speed :<br><br><b>
+					{{#if selectedRide }}
+						{{ selectedRide.vehicleId.model.speed }} km/h
+					{{else}}
+						NA
+					{{/if}}
+				</b>
+				</p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+{{yield}}

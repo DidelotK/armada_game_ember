@@ -1,0 +1,36 @@
+.message {
+	color: white;
+	font-size: 6em;
+	text-align: center;
+	font-family: 'ONEDAY';
+	padding-top: 50px;
+}
+.error {
+	font-size: 5em;
+	text-align: center;
+	font-family: 'ONEDAY';
+	margin-top: -70px;
+	color: #D80027;
+
+}
+.rescue_button {
+	width: 400px;
+	height: 80px;
+	-webkit-appearance: none;
+	border-radius: 5px;
+	background-color: black;
+	border : 2px white solid;
+	color: white;
+	font-size: 2em;
+	font-family: 'ONEDAY';
+	margin-top: -20px;
+}
+.rescue_button:hover {
+	background-color: rgb(242,203,48);
+	color: black;
+	border: 2px black solid;
+	cursor:  pointer;
+}
+.center {
+	text-align: center;
+}

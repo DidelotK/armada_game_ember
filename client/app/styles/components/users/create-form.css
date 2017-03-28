@@ -1,0 +1,11 @@
+.container {
+	background-color: grey;
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: 10px;
+}
+.center {
+	margin: 0 auto;
+	text-align: center;
+}

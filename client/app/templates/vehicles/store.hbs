@@ -1,0 +1,57 @@
+{{#link-to 'dashboard'}}
+	<img src="/assets/images/back.png" local-class="back"/>
+{{/link-to}}
+<h2 local-class="store_title">Vehicles Store</h2>
+<h3 local-class="store_money">Money: {{model.user.money}} €</h3>
+
+<div local-class="container">
+	{{#if error}}
+		<div class="ui black message">
+			<div class="header">
+				Error
+			</div>
+			<p>	{{error}}
+			</p>
+		</div>
+	{{/if}}
+	<table class="ui inverted table">
+		<thead>
+		<tr>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>Speed</th>
+			<th>Price</th>
+			<th>Picture</th>
+		</tr>
+		</thead>
+		<tbody>
+		{{#if model.models}}
+			{{#each model.models as |vehicle|}}
+				<tr>
+					<td class="middle aligned">{{ vehicle.brand }}</td>
+					<td class="middle aligned">{{ vehicle.make }}</td>
+					<td class="middle aligned">{{ vehicle.speed }} km/h</td>
+					<td class="middle aligned">{{ vehicle.price }} €</td>
+					<td class="middle aligned">
+						<div class="ui buttons">
+							<button class="ui button">
+								<img local-class="vehicle_picture" src="{{ vehicle.pictureUrl }}">
+							</button>
+							<button class="ui orange button"
+								{{action "buy" vehicle}}>
+								Buy
+							</button>
+						</div>
+					</td>
+				</tr>
+			{{/each}}
+		{{else}}
+			<tr>
+				<td>No vehicles to buy</td>
+			</tr>
+		{{/if}}
+		</tbody>
+	</table>
+</div>
+
+{{outlet}}

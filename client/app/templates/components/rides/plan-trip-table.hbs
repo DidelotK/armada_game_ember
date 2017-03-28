@@ -1,0 +1,93 @@
+<div local-class="container">
+	{{#if error}}
+		<div class="ui black message">
+			<div class="header">
+				Error
+			</div>
+			<p>	{{error}}
+			</p>
+		</div>
+	{{/if}}
+	<table class="ui inverted table" local-class="parameters">
+		<thead>
+		<tr>
+			<th>Vehicle</th>
+			<th>Departure</th>
+			<th>Arrival</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td class="middle aligned">
+				{{#ui-dropdown class="selection fluid"
+				selected=vehicleSelected onChange=(action 'updateVehicle' vehicleSelected)}}
+					<div class="default text">Available vehicle ...</div>
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						{{#each fleetInfo.availableVehicles as |vehicle|}}
+							<div class="item" data-value={{vehicle.id}}>
+								{{vehicle.model.brand}} - {{vehicle.model.make}}
+							</div>
+						{{/each}}
+					</div>
+				{{/ui-dropdown}}
+			</td>
+			<td class="middle aligned">
+				<div local-class="input-auto-complet">
+					{{
+					g-autocomplete
+					value=departureAddress
+					on-select=(action "didUpdateDeparture")
+					on-select-error=(action "invalidDepartureSelection")
+					}}
+				</div>
+			</td>
+			<td class="middle aligned">
+				<div local-class="input-auto-complet">
+					{{
+					g-autocomplete
+					value=arrivalAddress
+					on-select=(action "didUpdateArrival")
+					on-select-error=(action "invalidArrivalSelection")
+					}}
+				</div>
+			</td>
+			<td class="middle aligned">
+				<div class="ui buttons">
+					<button class="ui orange button"
+						{{action "start" ride}}>
+						START
+					</button>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<table class="ui inverted table" local-class="preview">
+		<tbody>
+		<tr>
+			<td class="middle aligned">
+				<div local-class="map">
+					{{my-google-map ride=ride}}
+				</div>
+			</td>
+			<td class="right aligned" local-class="estimation">
+				<p><br>Estimated Distance : <br><br><b>{{ estimatedDistance }}</b></p>
+				<p>Estimated Duration : <br><br>
+					<b>
+						{{#if (eq estimatedDuration 'NA')}}
+							NA
+						{{else}}
+							{{rides.duration estimatedDuration}}
+						{{/if}}
+					</b>
+				</p>
+				<p>Estimated Benefice : <br><br><b>{{ estimatedBenefice }}</b></p>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+{{yield}}

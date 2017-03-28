@@ -1,0 +1,35 @@
+<section local-class="login_box">
+	<form local-class="login_form">
+		<p local-class="center welcome">Welcome</p>
+		<p>
+			<label for="name">Name</label><br>
+			{{input id='name'
+				type='text'
+				value=name
+				class=(local-class 'input_fields')
+				required=true
+			}}
+		</p>
+		<p>
+			<label for="pass">Password</label><br>
+			{{input id='password'
+				type='password'
+				value=password
+			class=(local-class 'input_fields')
+				required=true
+			}}
+		</p>
+		<p local-class="center red">{{errorMessage}}</p>
+		<p local-class="center">
+			<input type="submit" value="Sign In" local-class="login_button"
+			{{action 'simpleLogin'}}>
+		</p>
+		<p local-class="center">
+				<img src="/assets/images/loginfacebook.jpg" local-class="bouton_facebook"
+				{{action 'facebookLogin'}}>
+		</p>
+		<p local-class="register_link">New user ? {{#link-to 'register'}}<a>Register</a>{{/link-to}}</p>
+	</form>
+</section>
+
+{{yield}}

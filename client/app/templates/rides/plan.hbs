@@ -1,0 +1,13 @@
+{{#link-to 'dashboard'}}
+	<img src="/assets/images/back.png" local-class="back"/>
+{{/link-to}}
+
+<h2 local-class="plan_title">Plan a trip</h2>
+
+{{rides.plan-trip-table
+	fleetInfo=fleetInfo
+	ride=model
+	start='start'
+}}
+
+{{outlet}}

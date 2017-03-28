@@ -1,0 +1,16 @@
+<div local-class="container">
+	{{#if (eq model.user.role 'admin')}}
+		{{users.profile-dashboard.admin
+		user=model.user
+		logout='logout'
+		}}
+	{{else}}
+		{{users.profile-dashboard.user
+		user=model.user
+		fleetInfo=fleetInfo
+		logout='logout'
+		}}
+	{{/if}}
+</div>
+
+{{outlet}}

@@ -1,0 +1,10 @@
+{{#link-to 'dashboard'}}
+    <img src="/assets/images/back.png" local-class="back"/>
+{{/link-to}}
+
+<h2 local-class="plan_title">View Rides</h2>
+
+{{rides.view-ride-table
+fleetInfo=fleetInfo
+}}
+{{outlet}}

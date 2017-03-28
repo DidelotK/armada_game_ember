@@ -1,0 +1,46 @@
+.content {
+	min-height: calc(100vh - 200px);
+}
+.content-inside {
+	position: relative;
+}
+.bloc_title {
+	border-bottom: 2px rgb(242,203,48) solid;
+	background-color: rgb(23,23,23);
+	margin: 0px;
+	padding: 0px;
+}
+.header_h1 {
+	vertical-align: center;
+	color: rgb(160,245,240);
+	text-align: center;
+	font-family: 'Tr2n';
+	font-size: 7em;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+}
+.header_h2 {
+	text-align: center;
+	color: white;
+	font-family: 'ONEDAY';
+	font-size: 1.15em;
+}
+.yellowbike, .bluebike {
+	vertical-align: text-bottom;
+	width: 20%;
+	padding: 0px;
+	margin: 0px;
+}
+.yellowbike, .header_h1
+{
+	display: inline-block;
+}
+
+.copyright{
+	font-size: 1.15em;
+}
+.copyright hr {
+	width: 150px;
+	margin-bottom: 15px;
+}

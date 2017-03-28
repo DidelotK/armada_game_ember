@@ -1,0 +1,72 @@
+<section local-class="register_box">
+	<div local-class="container-image">
+		<img src="/assets/images/register2.jpg" local-class="registerscreen">
+	</div>
+	{{#link-to 'login'}}
+		<img src="/assets/images/back.png" local-class="back"/>
+	{{/link-to}}
+	<form method="post" action="traitement.php" local-class="register_form">
+		<p local-class="center welcome">Register</p>
+		<p>
+			{{validated-input
+			id='surname'
+			type='text'
+			label='Surname'
+			value=user.surname
+			valuePath='surname'
+			model=user
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='name'
+			type='text'
+			label='Name'
+			value=user.name
+			valuePath='name'
+			icon='user'
+			model=user
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='email'
+			type='email'
+			label='Email'
+			value=user.email
+			valuePath='email'
+			model=user
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='password'
+			type='password'
+			label='Password'
+			value=user.password
+			valuePath='password'
+			icon='lock'
+			model=user
+			}}
+		</p>
+		<p>
+			{{validated-input
+			id='confirmPassword'
+			type='password'
+			label='Confirm Password'
+			value=user.passwordConfirmation
+			valuePath='passwordConfirmation'
+			icon='lock'
+			model=user
+			}}
+		</p>
+		<p local-class="center red">{{errorMessage}}</p>
+		<p local-class="center">
+			<input type="submit" value="Sign Up"
+						 local-class="register_button"
+						 disabled={{user.validations.isInvalid}}
+							 {{action 'register'}}>
+		</p>
+	</form>
+</section>
+{{yield}}

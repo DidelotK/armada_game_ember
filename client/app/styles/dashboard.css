@@ -1,0 +1,15 @@
+.container {
+	min-height: calc(100vh);
+	background: url("/assets/images/dashboard.jpg");
+	background-size: 80%;
+	background-position-x: center;
+	background-repeat:no-repeat;
+	max-width: 100%;
+}
+.container-image {
+	position: absolute;
+	width: 100%;
+	top: 0px;
+	left: 5%;
+	z-index: 1;
+}
